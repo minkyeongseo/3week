@@ -36,9 +36,15 @@
                 document.body.removeChild(fly);
                 score++;
                 scoreElement.textContent = score;
+                playShootSound();
             });
 
+
             document.body.appendChild(fly);
+        }
+        function playShootSound(){
+            var audio = new Audio('spray.mp3');
+            audio.play();
         }
 
         setInterval(createFly, 1000); // Create a fly every second
