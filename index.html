@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <style>
+        body {margin: 0; overflow: hidden;
+        }
+        .fly {
+            width: 70px;
+            height: 70px;
+            position: absolute;
+            cursor: pointer;
+            background: url(mos.png) no-repeat center center;
+            background-size: cover;
+        }
+    
+
+    </style>
+</head>
+<body>
+    <h1>모기 잡자!</h1>
+    <p>Score: <span id="score">0</span></p>
+
+    <script>
+        const scoreElement = document.getElementById("score");
+        let score = 0;
+
+        function createFly() {
+            const fly = document.createElement("div");
+            fly.classList.add("fly");
+            fly.style.left = Math.random() * window.innerWidth + "px";
+            fly.style.top = Math.random() * window.innerHeight + "px";
+
+
+            fly.addEventListener("click", () => {
+                document.body.removeChild(fly);
+                score++;
+                scoreElement.textContent = score;
+            });
+
+            document.body.appendChild(fly);
+        }
+
+        setInterval(createFly, 1000); // Create a fly every second
+    </script>
+</body>
+</html>
